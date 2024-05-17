@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const Favorites = () => {
@@ -15,7 +16,7 @@ const Favorites = () => {
   return (
     <div>
       <div className="movies">
-        {favourites.map((result) => (
+        {favourites.length>0 && favourites.map((result) => (
           <div className="card" key={result.imdbID}>
             <img src={result.Poster} alt={result.Title} />
             <h2>{result.Title}</h2>
