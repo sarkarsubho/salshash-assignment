@@ -7,7 +7,7 @@ const Favorites = () => {
   useEffect(() => {
     const fetchFavourites = async () => {
       // fetch favourites from DB
-      const response = await axios.get("/api/favourites");
+      const response = await axios.get("http://localhost:8080/api/favourites");
       setFavourites(response.data);
     };
     fetchFavourites();
@@ -16,15 +16,15 @@ const Favorites = () => {
   return (
     <div>
       <div className="movies">
-        {favourites.length>0 && favourites.map((result) => (
-          <div className="card" key={result.imdbID}>
-            <img src={result.Poster} alt={result.Title} />
-            <h2>{result.Title}</h2>
-            <p>Year: {result.Year}</p>
-            <p>Type: {result.Type}</p>
-            <button onClick={() => handleFavourite(result)}>Favourite</button>
-          </div>
-        ))}
+        {favourites.length > 0 &&
+          favourites.map((result) => (
+            <div className="card" key={result.imdbID}>
+              <img src={result.Poster} alt={result.Title} />
+              <h2>{result.Title}</h2>
+              <p>Year: {result.Year}</p>
+              <p>Type: {result.Type}</p>
+            </div>
+          ))}
       </div>
     </div>
   );

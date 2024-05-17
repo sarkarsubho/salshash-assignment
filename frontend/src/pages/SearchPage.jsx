@@ -7,7 +7,6 @@ const SearchPage = () => {
 
   const handleSearch = async (e) => {
     e.preventDefault();
-    const apiKey = "YOUR_OMDB_API_KEY";
     const url = `http://www.omdbapi.com/?i=tt3896198&s=${searchTerm}&apikey=47d98e7b`;
     const response = await axios.get(url);
     console.log(response.data);
@@ -16,8 +15,9 @@ const SearchPage = () => {
 
   const handleFavourite = (result) => {
     // save result to DB
-    axios.post("/api/favourites", result);
-    setFavourites([...favourites, result]);
+    axios.post("http://localhost:8080/api/favourites", result).then((res) => {
+      console.log(res.data);
+    });
   };
 
   return (
